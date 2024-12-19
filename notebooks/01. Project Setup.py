@@ -35,18 +35,6 @@ def create_Gold_Schema(environment, path):
 
 # COMMAND ----------
 
-create_Bronze_Schema(env,bronze_path)
-
-# COMMAND ----------
-
-create_Silver_Schema(env,silver_path)
-
-# COMMAND ----------
-
-create_Gold_Schema(env,gold_path)
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC
 # MAGIC ## Creating Bronze Tables
@@ -124,5 +112,9 @@ def createTable_rawRoad(environment):
 
 # COMMAND ----------
 
+create_Bronze_Schema(env,bronze_path) 
 createTable_rawTraffic(env)
 createTable_rawRoad(env)
+
+create_Silver_Schema(env,silver_path) 
+create_Gold_Schema(env,gold_path) 
