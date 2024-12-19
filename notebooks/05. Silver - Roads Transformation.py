@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-# MAGIC %run "/Users/shanmukh@shanmukhsattiraju.com/04. Common"
+# MAGIC %run "./04. Common"
 
 # COMMAND ----------
 
@@ -33,10 +33,6 @@ def read_BronzeRoadsTable(environment):
 # COMMAND ----------
 
 df_roads = read_BronzeRoadsTable(env)
-
-# COMMAND ----------
-
-
 
 # COMMAND ----------
 
@@ -134,4 +130,6 @@ write_Roads_SilverTable(df_type,env)
 
 # COMMAND ----------
 
-
+# MAGIC %sql
+# MAGIC
+# MAGIC SELECT COUNT(*) FROM `dev_catalog`.`silver`.`silver_roads`

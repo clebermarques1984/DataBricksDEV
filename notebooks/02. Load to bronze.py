@@ -160,3 +160,8 @@ write_Traffic_Data(read_Df,env)
 
 ## Writing the raw_roads's data from landing to Bronze
 write_Road_Data(read_roads,env)
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT COUNT(*) FROM `dev_catalog`.`bronze`.`raw_traffic`
