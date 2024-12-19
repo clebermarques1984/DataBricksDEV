@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %run "/Users/shanmukh@shanmukhsattiraju.com/04. Common"
+# MAGIC %run "./04. Common"
 
 # COMMAND ----------
 
@@ -160,7 +160,3 @@ write_Traffic_Data(read_Df,env)
 
 ## Writing the raw_roads's data from landing to Bronze
 write_Road_Data(read_roads,env)
-
-# COMMAND ----------
-
-

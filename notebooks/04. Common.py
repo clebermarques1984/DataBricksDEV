@@ -21,8 +21,8 @@
 
 # COMMAND ----------
 
-checkpoint_path = spark.sql("describe external location `checkpoints`").select("url").collect()[0][0]
-landing_path = spark.sql("describe external location `landing`").select("url").collect()[0][0]
+checkpoint = spark.sql("describe external location `checkpoints`").select("url").collect()[0][0]
+landing = spark.sql("describe external location `landing`").select("url").collect()[0][0]
 bronze_path = spark.sql("describe external location `bronze`").select("url").collect()[0][0]
 silver_path = spark.sql("describe external location `silver`").select("url").collect()[0][0]
 gold_path = spark.sql("describe external location `gold`").select("url").collect()[0][0]
