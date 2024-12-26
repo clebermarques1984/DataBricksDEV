@@ -32,7 +32,3 @@ SELECT COUNT(*) FROM `dev_catalog`.`gold`.gold_traffic
 -- Count of Gold Road Rows
 
 SELECT COUNT(*) FROM `dev_catalog`.`gold`.gold_roads
-
--- COMMAND ----------
-
-

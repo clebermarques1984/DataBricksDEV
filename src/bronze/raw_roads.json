@@ -51,6 +51,12 @@
       "name": "All_Motor_Vehicles",
       "nullable": true,
       "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "Extract_Time",
+      "nullable": true,
+      "type": "timestamp"
     }
   ],
   "type": "struct"

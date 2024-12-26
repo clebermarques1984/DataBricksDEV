@@ -1,6 +1,7 @@
 import json
-from pyspark.sql import types
 from pyspark.sql import *
+from pyspark.sql import types
+from pyspark.sql.functions import current_timestamp
 
 def import_query(path):
     """Imports a SQL query from a file and returns the query as a string"""
@@ -13,12 +14,24 @@ def import_schema(tablename):
     schema_df = types.StructType.fromJson(schema_json)
     return schema_df
 
-def handle_NULLs(df,Columns):
+def apply_clear_tr(df):
+    df1 = handle_NULLs(df)
+    df2 = remove_Dups(df1)
+    return df2
+
+def remove_Dups(df):
+    print('Removing Duplicate values: ', end='')
+    df_dup = df.dropDuplicates()
+    print('Success!! ')
+    return df_dup
+
+def handle_NULLs(df):
+    Allcolumns = df.schema.names
     print('Replacing NULLs of Strings DataType with "Unknown": ', end='')
-    df_string = df.fillna('Unknown',subset=Columns)
+    df_string = df.fillna('Unknown',subset=Allcolumns)
     print('Success!')
     print('Replacing NULLs of Numeric DataType with "0":  ', end='')
-    df_numeric = df_string.fillna(0,subset=Columns)
+    df_numeric = df_string.fillna(0,subset=Allcolumns)
     print('Success!')
     print('***********************')
     return df_numeric
@@ -79,6 +92,8 @@ def write_stream_to_table(spark, stream, catalog, database, tablename):
     print('Write Success')
     print("****************************")
 
-def extract_table(spark, catalog, database, tablename):
-    stream = readstream_from_csv(spark, tablename)
-    write_stream_to_table(spark, stream, catalog, database, tablename)
+def readstream_from_table(spark, catalog, database, tablename):
+    print(f'Reading the {tablename} Table Data : ',end='')
+    df_table = (spark.readStream.table(f"`{catalog}`.`{database}`.`{tablename}`"))
+    print(f'Reading Success!')
+    return df_table
