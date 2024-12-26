@@ -1,20 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC
-# MAGIC # To re-use common functions and variables
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC # Re-Using functions
-# MAGIC - We can re-use 2 functions here
-# MAGIC   - Removing Duplicates
-# MAGIC   - Removing NULLs
-
-# COMMAND ----------
-
 # MAGIC %md 
 # MAGIC # Defining all common variables
 # MAGIC
