@@ -1,0 +1,63 @@
+{
+  "fields": [
+    {
+      "metadata": {},
+      "name": "Road_ID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Road_Category_Id",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Road_Category",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "Region_ID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Region_Name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "Total_Link_Length_Km",
+      "nullable": true,
+      "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "Total_Link_Length_Miles",
+      "nullable": true,
+      "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "All_Motor_Vehicles",
+      "nullable": true,
+      "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "Extract_Time",
+      "nullable": true,
+      "type": "timestamp"
+    }
+  ],
+  "type": "struct"
+}

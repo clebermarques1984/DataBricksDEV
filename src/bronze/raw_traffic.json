@@ -1,0 +1,169 @@
+{
+  "fields": [
+    {
+      "metadata": {},
+      "name": "Record_ID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Count_point_id",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Direction_of_travel",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "Year",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Count_date",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "hour",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Region_id",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Region_name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Local_authority_name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Road_name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "Road_Category_ID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "Start_junction_road_name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "__CHAR_VARCHAR_TYPE_STRING": "varchar(255)"
+      },
+      "name": "End_junction_road_name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "Latitude",
+      "nullable": true,
+      "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "Longitude",
+      "nullable": true,
+      "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "Link_length_km",
+      "nullable": true,
+      "type": "double"
+    },
+    {
+      "metadata": {},
+      "name": "Pedal_cycles",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Two_wheeled_motor_vehicles",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Cars_and_taxis",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Buses_and_coaches",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "LGV_Type",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "HGV_Type",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "EV_Car",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "EV_Bike",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {},
+      "name": "Extract_Time",
+      "nullable": true,
+      "type": "timestamp"
+    }
+  ],
+  "type": "struct"
+}
