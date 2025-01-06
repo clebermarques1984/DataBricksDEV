@@ -40,9 +40,9 @@ def get_external_path(spark, path):
     """Get the external path from a given path"""
     return spark.sql(f"describe external location `{path}`").select("url").collect()[0][0]
 
-def create_schema(spark, catalog, schemaname):
-    path = get_external_path(spark, f'{schemaname}')
+def create_schema(spark, catalog, schemaname, rootpath):
     """Create a schema in the given catalog"""
+    path = f"{rootpath}/medallion/{schemaname}"
     print(f'Using {catalog} Catalog')
     spark.sql(f""" USE CATALOG '{catalog}'""")
     print(f'Creating {schemaname} Schema in {catalog}')
@@ -56,12 +56,12 @@ def create_table(spark, catalog, database, name):
     spark.sql(query.format(catalog=catalog, schema=database, tablename=name))
     print("************************************")
 
-def readstream_from_csv(spark, tablename):
+def readstream_from_csv(spark, tablename, rootpath):
+    """Read the csv data from the landing folder"""
     from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
     from pyspark.sql.functions import current_timestamp
-    """Read the csv data from the landing folder"""
-    checkpoints = get_external_path(spark, 'checkpoints')
-    landing = get_external_path(spark, 'landing')
+    checkpoints = f"{rootpath}/checkpoints"
+    landing = f"{rootpath}/landing"
     schema = import_schema(tablename)
     print(f"Reading {tablename} Data:  ", end='')
     read_stream = (spark.readStream
@@ -76,9 +76,9 @@ def readstream_from_csv(spark, tablename):
     print('*******************')
     return read_stream
 
-def write_stream_to_table(spark, stream, catalog, database, tablename):
+def write_stream_to_table(spark, stream, catalog, database, tablename, rootpath):
     """Write the stream to the target table"""
-    checkpoints = get_external_path(spark, 'checkpoints')
+    checkpoints = f"{rootpath}/checkpoints"
     print(f'Writing data to {catalog} {tablename} table: ', end='' )
     write_stream = (stream.writeStream
                     .format('delta')

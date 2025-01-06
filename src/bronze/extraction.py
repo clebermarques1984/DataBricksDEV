@@ -1,12 +1,5 @@
 # Databricks notebook source
-# MAGIC %load_ext autoreload
-# MAGIC %autoreload 2
-# MAGIC # Enables autoreload; learn more at https://docs.databricks.com/en/files/workspace-modules.html#autoreload-for-python-modules
-# MAGIC # To disable autoreload; run %autoreload 0
-
-# COMMAND ----------
-
-dbutils.widgets.text(name="env",defaultValue='',label='Enter the environment in lower case')
+dbutils.widgets.text(name="env",defaultValue='dev',label='Environment in lower case')
 env = dbutils.widgets.get("env")
 
 # COMMAND ----------
@@ -20,15 +13,16 @@ from pyspark.sql.functions import current_timestamp
 # variable
 catalog = f'{env}_catalog'
 database = "bronze"
+ws_rootpath = utils.get_external_path(spark, 'wscmf') + env
 
 # local functions
 def extract_table(tablename):
-    df = utils.readstream_from_csv(spark, tablename)
+    df = utils.readstream_from_csv(spark, tablename, ws_rootpath)
     df1 = df.withColumn('Extract_Time', current_timestamp())
-    utils.write_stream_to_table(spark, df1, catalog, database, tablename)
+    utils.write_stream_to_table(spark, df1, catalog, database, tablename, ws_rootpath)
 
 # create schema
-utils.create_schema(spark, catalog, database)
+utils.create_schema(spark, catalog, database, ws_rootpath)
 
 # extract tables
 extract_table('raw_roads')

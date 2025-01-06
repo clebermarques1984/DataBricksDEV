@@ -4,7 +4,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text(name="env",defaultValue='',label='Enter the environment in lower case')
+dbutils.widgets.text(name="env",defaultValue='dev',label='Enter the environment in lower case')
 env = dbutils.widgets.get("env")
 
 # COMMAND ----------
@@ -20,9 +20,10 @@ from pyspark.sql.functions import current_timestamp
 catalog = f'{env}_catalog'
 input_database = "bronze"
 database = "silver"
+ws_rootpath = utils.get_external_path(spark, 'wscmf') + env
 
 # create schema
-utils.create_schema(spark, catalog, database)
+utils.create_schema(spark, catalog, database, ws_rootpath)
 
 # read table
 df_roads = utils.readstream_from_table(spark, catalog, input_database, 'raw_roads')
@@ -73,6 +74,6 @@ df_traffic_tr = (df_traffic_clean
 print('Success!! ')
 
 # Writing to tables
-utils.write_stream_to_table(spark, df_roads_tr, catalog, database, 'silver_roads')
-utils.write_stream_to_table(spark, df_traffic_tr, catalog, database, 'silver_traffic')
+utils.write_stream_to_table(spark, df_roads_tr, catalog, database, 'silver_roads', ws_rootpath)
+utils.write_stream_to_table(spark, df_traffic_tr, catalog, database, 'silver_traffic', ws_rootpath)
 
